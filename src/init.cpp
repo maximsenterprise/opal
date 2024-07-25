@@ -1,6 +1,11 @@
-// init.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ init.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Main program entry
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "program.hpp"
 #include "shared.hpp"

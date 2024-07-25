@@ -1,6 +1,11 @@
-// shared.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ shared.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Shared variables
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "shared.hpp"
 #include "compiler/component.hpp"

@@ -1,6 +1,11 @@
-// struct.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ struct.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Structures for Opal
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "compiler/component.hpp"
 #include "compiler/transpositions.hpp"

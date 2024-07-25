@@ -1,6 +1,11 @@
-// transpile.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ transpile.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Final transpiler
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "compiler/component.hpp"
 #include "core/error.hpp"

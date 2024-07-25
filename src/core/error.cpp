@@ -1,6 +1,11 @@
-// error.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ error.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Error management
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "core/error.hpp"
 #include "shared.hpp"

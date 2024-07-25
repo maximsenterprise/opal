@@ -1,6 +1,11 @@
-// procedure.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ procedure.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Procedure declaration for Opal
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "compiler/component.hpp"
 #include "compiler/transpositions.hpp"
@@ -22,6 +27,35 @@ Component *procedure_declaration(std::vector<Node> *nodes) {
         } else {
             Node arg = eat(nodes);
             expect_token_type(nodes, TokenType::As);
+            if (nodes->at(0).token.value == "auto") {
+                eat(nodes);
+                arguments[arg.raw_value] = "auto";
+                if (nodes->at(0).token.type == TokenType::Comma) {
+                    eat(nodes);
+                } else if (nodes->at(0).token.type ==
+                           TokenType::ClosingParenthesis) {
+                    eat(nodes);
+                    break;
+                } else {
+                    error("Invalid arguments for a procedure", arg.token.line,
+                          arg.raw_value);
+                }
+                continue;
+            } else if (nodes->at(0).token.type == TokenType::Identifier) {
+                arguments[arg.raw_value] = nodes->at(0).raw_value;
+                eat(nodes);
+                if (nodes->at(0).token.type == TokenType::Comma) {
+                    eat(nodes);
+                } else if (nodes->at(0).token.type ==
+                           TokenType::ClosingParenthesis) {
+                    eat(nodes);
+                    break;
+                } else {
+                    error("Invalid arguments for a procedure", arg.token.line,
+                          arg.raw_value);
+                }
+                continue;
+            }
             Node type = expect_token_type(nodes, TokenType::Type);
             arguments[arg.raw_value] =
                 transpile_types(new Type(type.token, type.raw_value));

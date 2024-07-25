@@ -1,6 +1,11 @@
-// method.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ method.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Method declaration for Opal
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "compiler/component.hpp"
 #include "compiler/transpositions.hpp"

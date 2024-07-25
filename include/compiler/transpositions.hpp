@@ -22,5 +22,7 @@ Component *struct_statement(std::vector<Node> *nodes);
 void apply_statement(std::vector<Node> *nodes,
                      std::vector<Component> *components);
 Component *class_statement(std::vector<Node> *nodes);
+Component *include_macro(std::vector<Node> *nodes);
+Component *template_args(std::vector<Node> *nodes);
 
 #endif // TRANSPOSITIONS_HPP

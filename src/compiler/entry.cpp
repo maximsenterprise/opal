@@ -1,6 +1,11 @@
-// entry.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ entry.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Main point for the Transpiler
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "compiler/component.hpp"
 #include "compiler/transpositions.hpp"
@@ -9,6 +14,7 @@
 #include "parser/nodes.hpp"
 #include "shared.hpp"
 #include <iostream>
+#include <string>
 #include <vector>
 
 std::vector<Component> compile(std::vector<Node> nodes, bool running_method) {
@@ -60,6 +66,20 @@ std::vector<Component> compile(std::vector<Node> nodes, bool running_method) {
             eat(&nodes);
             components.push_back(*struct_statement(&nodes));
             break;
+        case TokenType::At:
+            eat(&nodes);
+            if (nodes.at(0).token.type != TokenType::Identifier) {
+                error("Invalid macro call", nodes.at(0).token.line,
+                      nodes.at(0).token.value);
+            }
+            if (nodes.at(0).token.value == "include") {
+                eat(&nodes);
+                components.push_back(*include_macro(&nodes));
+            } else {
+                error("Invalid macro call", nodes.at(0).token.line,
+                      nodes.at(0).token.value);
+            }
+            break;
         case TokenType::Return:
             if (!running_method) {
                 error("Return statement found outside of method",
@@ -68,6 +88,10 @@ std::vector<Component> compile(std::vector<Node> nodes, bool running_method) {
             }
             eat(&nodes);
             components.push_back(*return_statement(&nodes));
+            break;
+        case TokenType::OpenBracket:
+            eat(&nodes);
+            components.push_back(*template_args(&nodes));
             break;
         default:
             error("Invalid code found in source of type " +

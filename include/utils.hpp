@@ -27,5 +27,6 @@ bool contains_type(const std::string &value);
 void check_method(const std::vector<Node> *nodes);
 std::string get_atom_value(std::string atom_value);
 bool is_atom_correct(std::string atom_value);
+void replace(std::string &str, const std::string &from, const std::string &to);
 
 #endif // UTILS_H

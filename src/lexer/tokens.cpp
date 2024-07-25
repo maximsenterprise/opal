@@ -1,6 +1,11 @@
-// tokens.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ tokens.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Tokens translation
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "lexer/tokens.hpp"
 #include "shared.hpp"
@@ -18,7 +23,7 @@ std::map<std::string, TokenType> Shared::keywords = {
     {"apply", TokenType::Apply},   {"final", TokenType::Final},
     {"shared", TokenType::Shared}, {"struct", TokenType::Struct},
     {"rule", TokenType::Rule},     {"class", TokenType::Class},
-    {"new", TokenType::New},
+    {"new", TokenType::New},       {"const", TokenType::Const},
 };
 
 void Token::out() {

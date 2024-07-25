@@ -1,12 +1,14 @@
 
-class House {
-	shared {
-		method address() : string {
-			give "a";
-		}
+@include("iostream")
 
-		res n<int>, a<int>;
+[typename T]
+proc out(val as T&) {
+	!cpp {
+		std::cout << val << std::endl;
 	}
+}
 
-	res owner<string>;
+method main() : int {
+	out("Hello, World!");
+	give 0;
 }

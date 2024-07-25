@@ -1,6 +1,11 @@
-// lexer.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ lexer.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Lexer for the Opal Programming Language
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "lexer/lexer.hpp"
 #include "core/error.hpp"
@@ -74,6 +79,12 @@ std::vector<Token> tokenize(const std::string &source) {
             tokens.push_back(Token(TokenType::LessThan, "<", line));
         } else if (c == '>') {
             tokens.push_back(Token(TokenType::GreaterThan, ">", line));
+        } else if (c == '@') {
+            tokens.push_back(Token(TokenType::At, "@", line));
+        } else if (c == '[') {
+            tokens.push_back(Token(TokenType::OpenBracket, "[", line));
+        } else if (c == ']') {
+            tokens.push_back(Token(TokenType::ClosingBracket, "]", line));
         } else if (c == '=') {
             if (source[i + 1] == '=') {
                 tokens.push_back(Token(TokenType::LogicalEquals, "==", line));
@@ -187,12 +198,40 @@ std::vector<Token> tokenize(const std::string &source) {
             }
 
             if (contains_type(value)) {
+                std::string pointers = "";
+                while (source[i + 1] == '*') {
+                    pointers += "*";
+                    i++;
+                }
+                value += pointers;
+                if (pointers != "") {
+                    tokens.push_back(
+                        Token(TokenType::Type, value + pointers, line));
+                    continue;
+                }
                 tokens.push_back(Token(TokenType::Type, value, line));
             } else if (Shared::keywords.find(value) != Shared::keywords.end()) {
                 tokens.push_back(Token(Shared::keywords[value], value, line));
             } else if (value == "self") {
                 tokens.push_back(Token(TokenType::Identifier, "*this", line));
             } else {
+                std::string pointers = "";
+                while (source[i + 1] == '*') {
+                    pointers += "*";
+                    i++;
+                }
+                value += pointers;
+                if (pointers != "") {
+                    tokens.push_back(
+                        Token(TokenType::Identifier, value + pointers, line));
+                    continue;
+                }
+
+                while (source[i + 1] == '&') {
+                    value += "&";
+                    i++;
+                }
+
                 tokens.push_back(Token(TokenType::Identifier, value, line));
             }
         } else {

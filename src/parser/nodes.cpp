@@ -6,7 +6,10 @@
 #include "core/error.hpp"
 #include "lexer/tokens.hpp"
 #include "shared.hpp"
+#include "utils.hpp"
+#include <cstring>
 #include <iostream>
+#include <string>
 
 Token eat(std::vector<Token> *tokens) {
     Token token = tokens->at(0);
@@ -45,4 +48,4 @@ void Operation::out() const {
 }
 
 Type::Type(Token token, std::string raw_value)
-    : Node(token, raw_value), sample_token(Shared::sampleTokens[token.value]) {}
+    : Node(token, raw_value), sample_token(Shared::sampleTokens[raw_value]) {}

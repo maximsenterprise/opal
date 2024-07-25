@@ -1,6 +1,11 @@
-// parser.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ parser.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Basic Parser for Opal
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "core/error.hpp"
 #include "lexer/tokens.hpp"

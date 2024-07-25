@@ -1,6 +1,11 @@
-// class.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ class.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Classes in Opal and their syntax
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "compiler/component.hpp"
 #include "compiler/transpositions.hpp"

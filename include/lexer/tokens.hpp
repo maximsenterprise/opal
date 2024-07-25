@@ -27,6 +27,7 @@ enum class TokenType {
     Class,
     Shared,
     New,
+    Const,
 
     // Operators
     Plus,
@@ -53,6 +54,9 @@ enum class TokenType {
     Right_Arrow,
     ExclamationMark,
     Hash,
+    At,
+    OpenBracket,
+    ClosingBracket,
 
     // Literals
     String,

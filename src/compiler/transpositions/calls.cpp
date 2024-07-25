@@ -1,6 +1,11 @@
-// calls.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ calls.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Function calls
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "compiler/component.hpp"
 #include "compiler/transpositions.hpp"

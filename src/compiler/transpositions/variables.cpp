@@ -1,6 +1,11 @@
-// variables.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ variables.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Variable declaration
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "compiler/component.hpp"
 #include "compiler/transpositions.hpp"
@@ -15,6 +20,7 @@
 #include <vector>
 
 Component *variable_declaration(std::vector<Node> *nodes) {
+    bool is_const = false;
     if (nodes->at(1).token.type == TokenType::OpenParenthesis) {
         std::vector<Node> function_nodes = {};
         int open_parenthesis = 0;
@@ -79,6 +85,11 @@ Component *variable_declaration(std::vector<Node> *nodes) {
         return component;
     }
 
+    if (nodes->at(0).token.type == TokenType::Const) {
+        is_const = true;
+        eat(nodes);
+    }
+
     Node value = eat(nodes);
     expect_token_type(nodes, TokenType::Is);
     // val "Hello" is a<string>;
@@ -124,13 +135,21 @@ Component *variable_declaration(std::vector<Node> *nodes) {
 
     if (var_type == nullptr) {
         Type *type = new Type(value.token, "auto");
-        component->cpp_translation = transpile_types(type) + " " +
-                                     symbol.raw_value + " = " +
-                                     value.raw_value + ";";
+        component->cpp_translation = "";
+        if (is_const) {
+            component->cpp_translation += "const ";
+        }
+        component->cpp_translation += transpile_types(type) + " " +
+                                      symbol.raw_value + " = " +
+                                      value.raw_value + ";";
     } else {
-        component->cpp_translation = transpile_types(var_type) + " " +
-                                     symbol.raw_value + " = " +
-                                     value.raw_value + ";";
+        component->cpp_translation = "";
+        if (is_const) {
+            component->cpp_translation += "const ";
+        }
+        component->cpp_translation += transpile_types(var_type) + " " +
+                                      symbol.raw_value + " = " +
+                                      value.raw_value + ";";
     }
     return component;
 }

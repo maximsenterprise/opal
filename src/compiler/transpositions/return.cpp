@@ -1,6 +1,11 @@
-// return.cpp
-// As part of the Opal project
-// Created by Maxims Enterprise in 2024
+/*
+ return.cpp
+ As part of the Opal project
+ Created by Maxims Enterprise in 2024
+ --------------------------------------------------
+ Description: Return / Give statement
+ Copyright (c) 2024 Maxims Enterprise
+*/
 
 #include "compiler/component.hpp"
 #include "compiler/transpositions.hpp"
