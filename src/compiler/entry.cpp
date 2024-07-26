@@ -93,6 +93,10 @@ std::vector<Component> compile(std::vector<Node> nodes, bool running_method) {
             eat(&nodes);
             components.push_back(*template_args(&nodes));
             break;
+        case TokenType::Use:
+            eat(&nodes);
+            use_statement(&nodes, &components);
+            break;
         default:
             error("Invalid code found in source of type " +
                       Shared::tokenNames[node.token.type],

@@ -24,5 +24,7 @@ void apply_statement(std::vector<Node> *nodes,
 Component *class_statement(std::vector<Node> *nodes);
 Component *include_macro(std::vector<Node> *nodes);
 Component *template_args(std::vector<Node> *nodes);
+void use_statement(std::vector<Node> *nodes,
+                   std::vector<Component> *compile_components);
 
 #endif // TRANSPOSITIONS_HPP
